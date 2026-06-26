@@ -105,8 +105,7 @@ I'm documenting my learning journey publicly so that I can:
 
 ✅ Learning Python
 
-Next Goal:
-Git & GitHub
+Next Goal:To learn ML
 
 ---
 
