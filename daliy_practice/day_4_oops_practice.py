@@ -55,7 +55,7 @@ class book :
         print(f"book name : {self.title} \nauthor : {self.author} ".title())
 
 
-book_1 = book("the power of your subconscious mind","james clear")
+book_1 = book("the power of your subconscious mind","joseph murphy")
 
 book_1.display_book()
 
@@ -168,5 +168,187 @@ balance_1.check_balance()
 
 
 
+"""
+Create a class named YouTubeChannel.
+
+Attributes:
+- channel_name
+- subscribers
+
+Methods:
+- gain_subscribers(number)
+- lose_subscribers(number)
+- show_channel()
+
+Example:
+
+ZenThrox
+
+Subscribers: 500
+
+Gain 100
+
+Lose 50
+
+Final:
+
+Subscribers: 550
+"""
+
+
+class YoutubeChannel :
+    def __init__(self,channel_name,subscribers):
+        self.channel_name = channel_name
+        self.subscribers = subscribers
+
+    def gain_subscribers(self,number):
+        self.subscribers += number
+
+    def lose_subscribers(self,number):
+        self.subscribers -= number
+
+    def show_channel(self):
+        print(f"channel name is {self.channel_name} \nnumbers of subscribers this channel has are {self.subscribers} ".title())
+
+yt_channel = YoutubeChannel("ZenThrox",500)
+yt_channel.gain_subscribers(100)
+yt_channel.show_channel()
+yt_channel.lose_subscribers(89)
+yt_channel.show_channel()
+
+
+
+"""
+Create a class named Student.
+
+Attributes:
+- name
+- marks (list)
+
+Methods:
+
+- total_marks()
+
+- average_marks()
+
+- show_result()
+
+Output:
+
+Name: Dhruv
+
+Total: 425
+
+Average: 85
+"""
+
+Marks = [80,87,99,89,97]
+
+class Student :
+    def __init__(self,name,marks = Marks):
+        self.name =name
+        self.marks = marks
+
+    def total_marks(self):
+        return sum(self.marks)
+    def average_marks(self):
+        return sum(self.marks) /len(self.marks)
+    def show_result(self):
+        print(f"name: {self.name} \ntotal: {self.total_marks()} \naverage: {self.average_marks()}".title())
+
+student_1= Student("Dhruv")
+student_1.show_result()
+
+
+
+"""
+Create a class named Employee.
+
+Attributes:
+- name
+- salary
+
+Methods:
+
+- increase_salary(amount)
+
+- show_details()
+
+Example:
+
+Salary = 40000
+
+Increase by 5000
+
+Output:
+
+45000
+"""
+class Employee :
+    def __init__(self,name,salary):
+        self.name = name
+        self.salary = salary
+
+    def increase_salary(self,amount):
+        self.salary += amount
+
+    def show_details(self):
+        print(f"salary of {self.name} is {self.salary} ".title())
+
+Employee_1 =Employee("Harsh",40000)
+Employee_1.increase_salary(14000)
+Employee_1.show_details()
+
+
+"""
+Create a class named Car.
+
+Attributes:
+
+brand
+
+speed
+
+Methods:
+
+accelerate()
+
+brake()
+
+show_speed()
+
+Rules:
+
+accelerate() adds 20
+
+brake() subtracts 20
+
+Speed should never become negative.
+"""
+
+class car :
+    def __init__(self,brand ,speed ):
+        self.brand = brand
+        self.speed = speed
+
+    def accelerate(self):
+        self.speed += 20
+
+    def brake(self):
+
+        if self.speed >= 20 :
+            self.speed -= 20
+        else:
+            self.speed = 0
+
+    def show_speed(self):
+        print(f"the speed of the car is {self.speed} km/hr and the car is of {self.brand} brand ".title())
+
+car_1 =car("BMW",20)
+car_2 =car("mercedes",0)
+car_1.accelerate()
+car_1.show_speed()
+car_2.brake()
+car_2.show_speed()
 
 
