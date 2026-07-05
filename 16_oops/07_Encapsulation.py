@@ -276,3 +276,56 @@ laptop = LaptopSoftware(90)
 c = laptop.charge_battery(1)
 drain = laptop.battery_draining(4)
 print(laptop.check_battery_percentage())
+
+
+
+"""
+You are creating a Minecraft game.
+
+The player's health should be private.
+
+What we want:
+
+1. Start with 100 health.
+
+2. Take 30 damage.
+
+3. Heal by 20.
+
+4. Health should never go above 100.
+
+5. Health should never become below 0.
+
+Finally show the current health.
+"""
+
+class Minecraft :
+    def __init__(self,health):
+        self.__health = health
+
+    def damage(self,hits):
+        self.__health -= hits * 10
+        if self.__health <= 0 :
+            self.__health = 0
+            print("You are Dead")
+        else :
+            print(f"Your health is {self.__health}".title())
+
+    def heal(self,eat):
+        self.__health += eat*10
+        if self.__health >= 100:
+            self.__health = 100
+            print("Your health is full".title())
+        else :
+            print(f"your health is {self.__health}".title())
+
+    def show_health(self):
+        return self.__health
+
+player = Minecraft(100)
+player.damage(10)
+print(player.show_health())
+player.heal(5)
+print(player.show_health())
+
+
