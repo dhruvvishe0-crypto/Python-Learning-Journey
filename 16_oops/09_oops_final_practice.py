@@ -187,3 +187,313 @@ truck = Truck()
 car.rent()
 bike.rent()
 truck.rent()
+
+
+
+"""
+Create a parent class named Creator.
+
+Every creator has:
+
+- Name
+- Subscribers
+
+Create a child class named GamingCreator.
+
+GamingCreator should also have:
+
+- Main Game
+
+Use super() to initialize the common information.
+
+Create one object and display all the information.
+"""
+
+class Creator :
+    def __init__(self,name,subscribers):
+        self.name =name
+        self.subscribers = subscribers
+
+class GamingCreator(Creator):
+    def __init__(self,name,subscribers,main_game):
+        super().__init__(name,subscribers)
+        self.main_game = main_game
+
+
+    def show_info(self):
+        print(f"Channel Name : {self.name}")
+        print(f"Subscribers : {self.subscribers}")
+        print(f"Main Game : {self.main_game}")
+
+youtube = GamingCreator("ZenThrox",406,"Minecraft")
+youtube.show_info()
+
+"""
+You are creating an Amazon order system.
+
+Every order should have:
+
+- Private total amount
+
+What we want:
+
+1. Create an order worth ₹2500.
+
+2. Add another product worth ₹500.
+
+3. Remove a product worth ₹700.
+
+4. Total amount should never become negative.
+
+5. Finally show the total bill.
+"""
+
+class Amazon_Order_System:
+
+    def __init__(self,total_amount):
+        self.__total_amount = total_amount
+
+    def add(self,amount):
+        self.__total_amount += amount
+
+    def remove(self,amount):
+        if amount > self.__total_amount:
+            self.__total_amount = 0
+        else:
+            self.__total_amount -= amount
+    def show_bill(self):
+        print(f"Your Total Bill Is {self.__total_amount} Rupees ")
+
+amazon_order_system = Amazon_Order_System(2500)
+amazon_order_system.add(500)
+amazon_order_system.show_bill()
+amazon_order_system.remove(3001)
+amazon_order_system.show_bill()
+amazon_order_system.add(1000)
+amazon_order_system.remove(700)
+amazon_order_system.show_bill()
+
+
+"""
+Create an abstract class named MusicPlayer.
+
+Every music player must have:
+
+play_song()
+
+Create child classes:
+
+Spotify
+YouTubeMusic
+AppleMusic
+
+Each class should play the song in its own way.
+
+Create one object of each class and call play_song().
+"""
+from abc import ABC ,abstractmethod
+
+class MusicPlayer(ABC):
+    @abstractmethod
+    def play_song(self):
+        pass
+
+
+
+class Spotify(MusicPlayer):
+    def play_song(self):
+        print("Watch an ad first to listen to the song.")
+
+class YoutubeMusic(MusicPlayer):
+    def play_song(self):
+        print("Enjoy listening to songs for free!")
+
+class AppleMusic(MusicPlayer):
+    def play_song(self):
+        print("Buy a subscription to listen to songs.")
+
+
+spotify = Spotify()
+YoutubeMusicPlayer = YoutubeMusic()
+AppleMusicplayer = AppleMusic()
+
+spotify.play_song()
+YoutubeMusicPlayer.play_song()
+AppleMusicplayer.play_song()
+
+
+"""
+Create a parent class named Course.
+
+Every course has:
+
+- Course Name
+- Instructor
+
+Create a child class named PythonCourse.
+
+PythonCourse should also have:
+
+- Duration
+
+Use super() to initialize the common information.
+
+Display all the course details.
+"""
+
+
+class Course:
+    def __init__(self, Course_name, Instructor):
+        self.Course_name = Course_name
+        self.Instructor = Instructor
+
+class PythonCourse(Course):
+    def __init__(self,Course_name,Instructor,Duration):
+        super().__init__(Course_name,Instructor)
+        self.Duration = Duration
+
+    def display(self):
+        print(f"Course Name : {self.Course_name}")
+        print(f"Instructor : {self.Instructor}")
+        print(f"Duration : {self.Duration}")
+
+course = PythonCourse("Python","Code With Bro","6 Months")
+course.display()
+
+
+
+"""
+Create a Movie Ticket Booking System.
+
+Requirements:
+
+1. Create an abstract class named MovieTicket.
+
+2. Every ticket must have a method:
+   book_ticket()
+
+3. Create two child classes:
+
+RegularTicket
+VIPTicket
+
+Each should book tickets differently.
+
+Also keep the ticket price private.
+
+What we want:
+
+- Show ticket price.
+- Allow changing the ticket price only through a method.
+- Book the ticket.
+- Print all details.
+"""
+
+
+from abc import ABC, abstractmethod
+
+
+class MovieTicket(ABC):
+
+    def __init__(self, price):
+        self.price = price
+
+    def show_ticket_price(self):
+        print(f"Ticket Price: ₹{self.price}")
+
+    def payment(self):
+        amount = int(input("Enter payment amount: "))
+        return amount
+
+    @abstractmethod
+    def book_ticket(self):
+        pass
+
+
+class RegularTicket(MovieTicket):
+
+    def __init__(self):
+        super().__init__(500)
+
+    def book_ticket(self):
+
+        payment = self.payment()
+
+        if payment == 0:
+            print(f"First pay ₹{self.price}.")
+
+        elif payment < self.price:
+
+            remaining = self.price - payment
+
+            print(f"You still need to pay ₹{remaining}.")
+
+            extra = int(input("Enter remaining payment: "))
+
+            payment += extra
+
+            if payment >= self.price:
+                print("Ticket Booked Successfully!")
+            else:
+                print("Booking Failed. Full payment not received.")
+
+        elif payment == self.price:
+            print("Ticket Booked Successfully!")
+
+        else:
+            refund = payment - self.price
+            print("Ticket Booked Successfully!")
+            print(f"Refund Amount: ₹{refund}")
+
+
+class VipTicket(MovieTicket):
+
+    def __init__(self):
+        super().__init__(1499)
+
+    def book_ticket(self):
+
+        payment = self.payment()
+
+        if payment == 0:
+            print(f"First pay ₹{self.price}.")
+
+        elif payment < self.price:
+
+            remaining = self.price - payment
+
+            print(f"You still need to pay ₹{remaining}.")
+
+            extra = int(input("Enter remaining payment: "))
+
+            payment += extra
+
+            if payment >= self.price:
+                print("VIP Ticket Booked Successfully!")
+            else:
+                print("Booking Failed. Full payment not received.")
+
+        elif payment == self.price:
+            print("VIP Ticket Booked Successfully!")
+
+        else:
+            refund = payment - self.price
+            print("VIP Ticket Booked Successfully!")
+            print(f"Refund Amount: ₹{refund}")
+
+
+regular = RegularTicket()
+
+regular.show_ticket_price()
+
+regular.book_ticket()
+
+
+print("\n---------------------------\n")
+
+
+vip = VipTicket()
+
+vip.show_ticket_price()
+
+vip.book_ticket()
