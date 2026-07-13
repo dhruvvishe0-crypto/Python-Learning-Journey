@@ -159,3 +159,18 @@ greet()
 
 
 # python reads decorators from top to bottom
+
+
+
+def decorator(func):
+    def wrapper():
+        print("Starting")
+        func()
+        print("Ended")
+    return wrapper
+
+@decorator
+def hello():
+    print("Hello Dhruv")
+
+hello()
