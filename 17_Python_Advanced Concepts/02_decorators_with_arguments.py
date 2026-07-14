@@ -67,13 +67,20 @@ def discount(percent):
     return decorator
 
 @discount(20)
-def Percentage(item_name):
+def percentage(item_name):
     print(f"Congratulations You have Got discount on {item_name}")
 
-Percentage("Laptop")
+percentage("Laptop")
 @discount(45)
-def Percentage(item_name):
+def percentage(item_name):
     print(f"Congratulations You have Got discount on {item_name}")
 
-Percentage("Laptop")
+percentage("Laptop")
+
+
+
+
+
+
+
 
