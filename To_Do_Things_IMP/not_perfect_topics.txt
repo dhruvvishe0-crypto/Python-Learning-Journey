@@ -1,0 +1,4 @@
+
+
+1) getters and setters
+2)static and class methods
